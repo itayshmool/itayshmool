@@ -862,6 +862,182 @@
     from { transform: translateX(-100%); }
     to { transform: translateX(0); }
   }
+
+  /* ─── DARK MODE TOGGLE ─── */
+  .theme-toggle {
+    appearance: none;
+    border: none;
+    background: none;
+    cursor: pointer;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gray-500);
+    transition: color 0.3s, background 0.3s;
+    flex-shrink: 0;
+    margin-left: 12px;
+  }
+
+  .theme-toggle:hover {
+    color: var(--black);
+    background: var(--gray-100);
+  }
+
+  .theme-toggle .icon-sun,
+  .theme-toggle .icon-moon { transition: opacity 0.3s, transform 0.3s; }
+
+  .theme-toggle .icon-sun { display: block; }
+  .theme-toggle .icon-moon { display: none; }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ─── DARK MODE ─── */
+  [data-theme="dark"] {
+    --black: #f0f0f0;
+    --white: #0a0a0a;
+    --gray-50: #141414;
+    --gray-100: #1a1a1a;
+    --gray-200: #2a2a2a;
+    --gray-400: #707070;
+    --gray-500: #999999;
+    --gray-600: #b0b0b0;
+    --blue: #4d94ff;
+  }
+
+  [data-theme="dark"] body {
+    color: #f0f0f0;
+    background: #0a0a0a;
+  }
+
+  [data-theme="dark"] nav.scrolled {
+    background: rgba(10,10,10,0.85);
+    border-bottom-color: #2a2a2a;
+  }
+
+  [data-theme="dark"] .page-loader {
+    background: #0a0a0a;
+  }
+
+  [data-theme="dark"] .stat {
+    background: #0a0a0a;
+  }
+
+  [data-theme="dark"] .stats {
+    background: #2a2a2a;
+    border-top-color: #2a2a2a;
+    border-bottom-color: #2a2a2a;
+  }
+
+  [data-theme="dark"] .career-card {
+    border-color: #2a2a2a;
+  }
+
+  [data-theme="dark"] .career-card:hover {
+    border-color: #444;
+  }
+
+  [data-theme="dark"] .featured-project {
+    border-color: #4d94ff;
+  }
+
+  [data-theme="dark"] .featured-project::before {
+    background: linear-gradient(135deg, rgba(77,148,255,0.05), rgba(77,148,255,0.12));
+  }
+
+  [data-theme="dark"] .featured-project:hover {
+    box-shadow: 0 12px 40px rgba(77,148,255,0.15);
+  }
+
+  [data-theme="dark"] .project-tag {
+    background: #1a1a1a;
+    color: #b0b0b0;
+  }
+
+  [data-theme="dark"] .tech-pill {
+    border-color: #2a2a2a;
+    color: #b0b0b0;
+  }
+
+  [data-theme="dark"] .tech-pill:hover {
+    border-color: #4d94ff;
+    color: #4d94ff;
+    background: rgba(77,148,255,0.08);
+  }
+
+  [data-theme="dark"] .innovation-item {
+    background: #141414;
+  }
+
+  [data-theme="dark"] .side-card {
+    background: #141414;
+  }
+
+  [data-theme="dark"] .side-card:hover {
+    background: #1a1a1a;
+  }
+
+  [data-theme="dark"] .quote-section {
+    background: #0f0f0f;
+  }
+
+  [data-theme="dark"] footer {
+    border-top-color: #2a2a2a;
+  }
+
+  [data-theme="dark"] .about-details {
+    border-top-color: #2a2a2a;
+  }
+
+  [data-theme="dark"] .project {
+    border-bottom-color: #2a2a2a;
+  }
+
+  [data-theme="dark"] .project:first-child {
+    border-top-color: #2a2a2a;
+  }
+
+  [data-theme="dark"] ::selection {
+    background: #4d94ff;
+    color: #0a0a0a;
+  }
+
+  [data-theme="dark"] .theme-toggle:hover {
+    color: #f0f0f0;
+    background: #1a1a1a;
+  }
+
+  [data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+  [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
+  [data-theme="dark"] .hero-rule {
+    background: #f0f0f0;
+  }
+
+  [data-theme="dark"] .loader-bar::after {
+    background: #f0f0f0;
+  }
+
+  /* Smooth theme transition */
+  html[data-theme] body,
+  html[data-theme] nav,
+  html[data-theme] .stat,
+  html[data-theme] .career-card,
+  html[data-theme] .innovation-item,
+  html[data-theme] .side-card,
+  html[data-theme] .quote-section,
+  html[data-theme] .project,
+  html[data-theme] .tech-pill,
+  html[data-theme] .featured-project,
+  html[data-theme] footer {
+    transition: background-color 0.4s, color 0.4s, border-color 0.4s;
+  }
 </style>
 </head>
 <body>
@@ -880,7 +1056,13 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#innovation">AI & Innovation</a></li>
   </ul>
-  <a href="https://www.linkedin.com/in/itayshmool/" target="_blank" rel="noopener" class="nav-cta">Connect &rarr;</a>
+  <div class="nav-right">
+    <a href="https://www.linkedin.com/in/itayshmool/" target="_blank" rel="noopener" class="nav-cta">Connect &rarr;</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
 </nav>
 
 <!-- HERO -->
@@ -1223,6 +1405,37 @@
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
+  });
+
+  // Dark mode toggle
+  const themeToggle = document.getElementById('themeToggle');
+  const html = document.documentElement;
+
+  function setTheme(theme) {
+    html.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }
+
+  // Init: check saved preference, then system preference
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    setTheme(saved);
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    setTheme('dark');
+  } else {
+    setTheme('light');
+  }
+
+  themeToggle.addEventListener('click', () => {
+    const current = html.getAttribute('data-theme');
+    setTheme(current === 'dark' ? 'light' : 'dark');
+  });
+
+  // Listen for system preference changes
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+    if (!localStorage.getItem('theme')) {
+      setTheme(e.matches ? 'dark' : 'light');
+    }
   });
 </script>
 
