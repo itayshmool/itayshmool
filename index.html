@@ -433,6 +433,84 @@
     border-top: 1px solid var(--gray-200);
   }
 
+  /* ─── FEATURED PROJECT ─── */
+  .featured-project {
+    display: block;
+    border: 2px solid var(--blue);
+    border-radius: 20px;
+    padding: 40px 32px;
+    margin-bottom: 40px;
+    text-decoration: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .featured-project::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,102,255,0.03), rgba(0,102,255,0.08));
+    z-index: 0;
+  }
+
+  .featured-project:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,102,255,0.12);
+  }
+
+  .featured-project > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .featured-badge {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--blue);
+    margin-bottom: 16px;
+  }
+
+  .featured-project h3 {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+
+  .featured-project > p {
+    font-size: 15px;
+    color: var(--gray-500);
+    line-height: 1.6;
+    max-width: 560px;
+  }
+
+  .featured-project .project-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 16px;
+    align-items: center;
+  }
+
+  .featured-project .featured-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blue);
+    transition: gap 0.2s;
+  }
+
+  .featured-project:hover .featured-cta {
+    gap: 10px;
+  }
+
   .project:hover {
     opacity: 0.6;
   }
@@ -733,7 +811,7 @@
     .innovation-grid { grid-template-columns: repeat(3, 1fr); }
 
     .side-grid {
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
       gap: 16px;
     }
 
@@ -801,7 +879,6 @@
     <li><a href="#career">Career</a></li>
     <li><a href="#projects">Projects</a></li>
     <li><a href="#innovation">AI & Innovation</a></li>
-    <li><a href="#community">Community</a></li>
   </ul>
   <a href="https://www.linkedin.com/in/itayshmool/" target="_blank" rel="noopener" class="nav-cta">Connect &rarr;</a>
 </nav>
@@ -887,26 +964,21 @@
       <p>Chairman of Payments by Wix and VP of Premium Services since 2016, overseeing the monetization engine behind Wix's business model.</p>
     </div>
     <div class="career-card reveal reveal-delay-1">
-      <div class="career-card-icon">&#10024;</div>
-      <h3>Google Partnership</h3>
-      <p>Key role in making Wix the first reseller of Google's Gemini for Workspace, a strategic milestone in the company's AI journey.</p>
-    </div>
-    <div class="career-card reveal reveal-delay-2">
       <div class="career-card-icon">&#9889;</div>
       <h3>Shipping Velocity</h3>
       <p>Shipped 7 products in 2 months while serving as executive — proof that leadership and hands-on building aren't mutually exclusive.</p>
     </div>
-    <div class="career-card reveal reveal-delay-3">
+    <div class="career-card reveal reveal-delay-2">
       <div class="career-card-icon">&#9881;</div>
       <h3>Autonomous Systems</h3>
       <p>"I don't just manage teams; I build autonomous systems." — architecting self-running processes that scale beyond any individual.</p>
     </div>
-    <div class="career-card reveal reveal-delay-4">
+    <div class="career-card reveal reveal-delay-3">
       <div class="career-card-icon">&#128302;</div>
       <h3>AI Solutions Architect</h3>
       <p>Bridging executive leadership with hands-on AI development — building MCP servers, agent swarms, and AI-powered internal tools.</p>
     </div>
-    <div class="career-card reveal reveal-delay-5">
+    <div class="career-card reveal reveal-delay-4">
       <div class="career-card-icon">&#127891;</div>
       <h3>Developer Origins</h3>
       <p>Started as a software developer — Java, Perl, Shell. The engineering mindset still drives every strategic decision.</p>
@@ -921,6 +993,19 @@
     <h2 class="section-title reveal reveal-delay-1">What I<br>build.</h2>
     <p class="section-subtitle reveal reveal-delay-2">Open source projects, tools, and platforms — shipped fast, built to last.</p>
   </div>
+  <a href="https://about.zero2claude.dev/" target="_blank" rel="noopener" class="featured-project reveal">
+    <span class="featured-badge">&#9733; Featured Project</span>
+    <h3>From Zero to Claude Code</h3>
+    <p>Interactive training platform: from zero computer science knowledge to junior developer — powered by Claude Code. A complete educational journey into AI-assisted development.</p>
+    <div class="project-meta">
+      <span class="project-tag">TypeScript</span>
+      <span class="project-tag">Education</span>
+      <span class="project-tag">AI-Powered</span>
+      <span class="project-stars">&#9733; 1</span>
+    </div>
+    <span class="featured-cta">Learn Claude Code with me &rarr;</span>
+  </a>
+
   <div class="projects-list">
     <a href="https://github.com/itayshmool/multi-bark-pack" target="_blank" rel="noopener" class="project reveal">
       <span class="project-number">01</span>
@@ -936,21 +1021,8 @@
       </div>
       <span class="project-arrow">&rarr;</span>
     </a>
-    <a href="https://github.com/itayshmool/from-dev-basics-to-claude-code" target="_blank" rel="noopener" class="project reveal">
-      <span class="project-number">02</span>
-      <div class="project-info">
-        <h3>from-dev-basics-to-claude-code</h3>
-        <p>Interactive training platform: from zero computer science knowledge to junior developer — powered by Claude Code.</p>
-        <div class="project-meta">
-          <span class="project-tag">TypeScript</span>
-          <span class="project-tag">Education</span>
-          <span class="project-stars">&#9733; 1</span>
-        </div>
-      </div>
-      <span class="project-arrow">&rarr;</span>
-    </a>
     <a href="https://github.com/itayshmool/google-slides-mcp" target="_blank" rel="noopener" class="project reveal">
-      <span class="project-number">03</span>
+      <span class="project-number">02</span>
       <div class="project-info">
         <h3>google-slides-mcp</h3>
         <p>MCP (Model Context Protocol) server connecting AI assistants to Google Slides for automated presentation creation.</p>
@@ -963,7 +1035,7 @@
       <span class="project-arrow">&rarr;</span>
     </a>
     <a href="https://github.com/itayshmool/godaddy-reseller-api" target="_blank" rel="noopener" class="project reveal">
-      <span class="project-number">04</span>
+      <span class="project-number">03</span>
       <div class="project-info">
         <h3>godaddy-reseller-api</h3>
         <p>Complete GoDaddy Domain Reseller API v2 implementation — SDK, CLI tool, and server. Full API client architecture.</p>
@@ -976,7 +1048,7 @@
       <span class="project-arrow">&rarr;</span>
     </a>
     <div class="project reveal" style="cursor: default; opacity: 0.7;">
-      <span class="project-number">05</span>
+      <span class="project-number">04</span>
       <div class="project-info">
         <h3>feedbackflow-app</h3>
         <p>Full-stack feedback management platform with PostgreSQL backend. Largest codebase — 6MB+ of TypeScript source.</p>
@@ -989,7 +1061,7 @@
       <span class="project-arrow" style="opacity: 0.3;">&#128274;</span>
     </div>
     <a href="https://github.com/itayshmool/wix-ucp" target="_blank" rel="noopener" class="project reveal">
-      <span class="project-number">06</span>
+      <span class="project-number">05</span>
       <div class="project-info">
         <h3>wix-ucp</h3>
         <p>Wix Unified Control Panel — enterprise-grade internal tooling for managing Wix's platform operations.</p>
@@ -1049,26 +1121,6 @@
   </div>
 </section>
 
-<!-- COMMUNITY -->
-<section id="community">
-  <div class="section-header">
-    <div class="section-eyebrow reveal">Community</div>
-    <h2 class="section-title reveal reveal-delay-1">Giving back.</h2>
-  </div>
-  <div class="community-content">
-    <div class="reveal">
-      <div class="community-highlight">
-        26+
-        <span>Years of Teaching</span>
-      </div>
-    </div>
-    <div class="community-text reveal reveal-delay-1">
-      <h3>Gaya &mdash; Mathematics Education</h3>
-      <p>Since 2000, volunteering as a teacher and program founder at Gaya. Built and coordinates a community involvement initiative with approximately 30 Wix employees teaching mathematics at Lod's college. Education is not a side project — it's a lifelong commitment.</p>
-    </div>
-  </div>
-</section>
-
 <!-- SIDE PROJECTS -->
 <section>
   <div class="section-header">
@@ -1092,11 +1144,6 @@
       <p>Claude vs Cursor vs Codex vs Gemini — benchmark apps</p>
     </div>
     <div class="side-card reveal reveal-delay-3">
-      <div class="side-card-emoji">&#128141;</div>
-      <h4>Wedding Sites</h4>
-      <p>Custom wedding invitation and RSVP websites</p>
-    </div>
-    <div class="side-card reveal reveal-delay-4">
       <div class="side-card-emoji">&#128736;</div>
       <h4>Wix Concepts</h4>
       <p>Internal concept pages, Creators Day, Spaceship concept</p>
