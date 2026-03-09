@@ -263,32 +263,6 @@
   }
 
   /* ─── ABOUT ─── */
-  .about-layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 48px;
-    align-items: start;
-  }
-
-  .about-photo {
-    order: -1;
-    max-width: 280px;
-    margin: 0 auto;
-  }
-
-  .about-photo img {
-    width: 100%;
-    height: auto;
-    border-radius: 20px;
-    object-fit: cover;
-    filter: grayscale(1);
-    transition: filter 0.5s;
-  }
-
-  .about-photo img:hover {
-    filter: grayscale(0);
-  }
-
   .about-text {
     font-size: clamp(22px, 4vw, 36px);
     line-height: 1.5;
@@ -337,28 +311,51 @@
   /* ─── QUOTE ─── */
   .quote-section {
     background: var(--gray-50);
-    padding: 80px 24px;
-    text-align: center;
+    padding: 48px 24px;
     max-width: 100%;
+  }
+
+  .quote-inner {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 24px;
+    align-items: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .quote-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 14px;
+    object-fit: cover;
+    filter: grayscale(1);
+    transition: filter 0.5s;
+  }
+
+  .quote-photo img:hover {
+    filter: grayscale(0);
+  }
+
+  .quote-text {
+    text-align: left;
   }
 
   .quote-section blockquote {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: clamp(20px, 4vw, 32px);
+    font-size: 16px;
     line-height: 1.5;
-    max-width: 720px;
-    margin: 0 auto;
     color: var(--black);
     letter-spacing: -0.01em;
   }
 
   .quote-section cite {
     display: block;
-    margin-top: 24px;
+    margin-top: 12px;
     font-family: var(--font-sans);
     font-style: normal;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--gray-400);
     letter-spacing: 0.04em;
   }
@@ -806,18 +803,21 @@
       gap: 32px;
     }
 
-    .about-layout {
-      grid-template-columns: 1fr 260px;
-      gap: 64px;
-      align-items: start;
+    .quote-inner {
+      grid-template-columns: 140px 1fr;
+      gap: 40px;
     }
 
-    .about-photo {
-      order: 0;
-      max-width: none;
-      margin: 0;
-      position: sticky;
-      top: 120px;
+    .quote-section {
+      padding: 64px 40px;
+    }
+
+    .quote-section blockquote {
+      font-size: 20px;
+    }
+
+    .quote-photo img {
+      border-radius: 18px;
     }
 
     .career-grid { grid-template-columns: repeat(2, 1fr); }
@@ -844,13 +844,21 @@
 
     .nav-links { display: flex; }
 
-    .about-layout {
-      grid-template-columns: 1fr 320px;
-      gap: 80px;
+    .quote-inner {
+      grid-template-columns: 180px 1fr;
+      gap: 56px;
     }
 
-    .about-photo img {
-      border-radius: 24px;
+    .quote-section {
+      padding: 80px 80px;
+    }
+
+    .quote-section blockquote {
+      font-size: 26px;
+    }
+
+    .quote-photo img {
+      border-radius: 20px;
     }
 
     .about-details { grid-template-columns: repeat(4, 1fr); }
@@ -1148,52 +1156,52 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <div class="about-layout">
-    <div>
-      <p class="about-text reveal">
-        <strong>Twenty years ago, I wrote my first line of code.</strong>
-        <span class="muted"> Today I lead Premium & Payments at one of the world's largest web platforms. </span>
-        The journey from developer to VP taught me that the best leaders never stop building.
-      </p>
-      <div class="about-details">
-        <div class="about-detail reveal">
-          <span class="about-detail-label">Role</span>
-          <span class="about-detail-value">VP, Premium & Payments</span>
-        </div>
-        <div class="about-detail reveal reveal-delay-1">
-          <span class="about-detail-label">Company</span>
-          <span class="about-detail-value">Wix.com</span>
-        </div>
-        <div class="about-detail reveal reveal-delay-2">
-          <span class="about-detail-label">Education</span>
-          <span class="about-detail-value">Ben-Gurion University, 1996&ndash;99</span>
-        </div>
-        <div class="about-detail reveal reveal-delay-3">
-          <span class="about-detail-label">Location</span>
-          <span class="about-detail-value">Israel</span>
-        </div>
-      </div>
+  <p class="about-text reveal">
+    <strong>Twenty years ago, I wrote my first line of code.</strong>
+    <span class="muted"> Today I lead Premium & Payments at one of the world's largest web platforms. </span>
+    The journey from developer to VP taught me that the best leaders never stop building.
+  </p>
+  <div class="about-details">
+    <div class="about-detail reveal">
+      <span class="about-detail-label">Role</span>
+      <span class="about-detail-value">VP, Premium & Payments</span>
     </div>
-    <div class="about-photo reveal reveal-delay-1">
-      <img
-        src="itay-800.jpg"
-        srcset="itay-800.jpg 800w, itay-1200.jpg 1200w"
-        sizes="(max-width: 639px) 280px, (max-width: 1023px) 260px, 320px"
-        alt="Itay Shmool"
-        width="800"
-        height="1200"
-        loading="eager"
-      >
+    <div class="about-detail reveal reveal-delay-1">
+      <span class="about-detail-label">Company</span>
+      <span class="about-detail-value">Wix.com</span>
+    </div>
+    <div class="about-detail reveal reveal-delay-2">
+      <span class="about-detail-label">Education</span>
+      <span class="about-detail-value">Ben-Gurion University, 1996&ndash;99</span>
+    </div>
+    <div class="about-detail reveal reveal-delay-3">
+      <span class="about-detail-label">Location</span>
+      <span class="about-detail-value">Israel</span>
     </div>
   </div>
 </section>
 
 <!-- QUOTE -->
 <div class="quote-section section-full">
-  <blockquote class="reveal">
-    &ldquo;Throughout my career, I always believed in teamwork. Trust your people, support them, mentor them and let them do some mistakes and learn.&rdquo;
-  </blockquote>
-  <cite class="reveal reveal-delay-1">&mdash; Itay Shmool</cite>
+  <div class="quote-inner">
+    <div class="quote-photo reveal">
+      <img
+        src="itay-800.jpg"
+        srcset="itay-800.jpg 800w, itay-1200.jpg 1200w"
+        sizes="(max-width: 639px) 100px, (max-width: 1023px) 140px, 180px"
+        alt="Itay Shmool"
+        width="800"
+        height="1200"
+        loading="eager"
+      >
+    </div>
+    <div class="quote-text">
+      <blockquote class="reveal">
+        &ldquo;Throughout my career, I always believed in teamwork. Trust your people, support them, mentor them and let them do some mistakes and learn.&rdquo;
+      </blockquote>
+      <cite class="reveal reveal-delay-1">&mdash; Itay Shmool</cite>
+    </div>
+  </div>
 </div>
 
 <!-- WIX CAREER -->
