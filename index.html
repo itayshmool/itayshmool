@@ -263,6 +263,32 @@
   }
 
   /* ─── ABOUT ─── */
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+
+  .about-photo {
+    order: -1;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+
+  .about-photo img {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    object-fit: cover;
+    filter: grayscale(0.15);
+    transition: filter 0.5s;
+  }
+
+  .about-photo img:hover {
+    filter: grayscale(0);
+  }
+
   .about-text {
     font-size: clamp(22px, 4vw, 36px);
     line-height: 1.5;
@@ -780,6 +806,20 @@
       gap: 32px;
     }
 
+    .about-layout {
+      grid-template-columns: 1fr 260px;
+      gap: 64px;
+      align-items: start;
+    }
+
+    .about-photo {
+      order: 0;
+      max-width: none;
+      margin: 0;
+      position: sticky;
+      top: 120px;
+    }
+
     .career-grid { grid-template-columns: repeat(2, 1fr); }
 
     .project {
@@ -803,6 +843,15 @@
     nav.scrolled { padding: 16px 48px; }
 
     .nav-links { display: flex; }
+
+    .about-layout {
+      grid-template-columns: 1fr 320px;
+      gap: 80px;
+    }
+
+    .about-photo img {
+      border-radius: 24px;
+    }
 
     .about-details { grid-template-columns: repeat(4, 1fr); }
 
@@ -1099,27 +1148,42 @@
 
 <!-- ABOUT -->
 <section id="about">
-  <p class="about-text reveal">
-    <strong>Twenty years ago, I wrote my first line of code.</strong>
-    <span class="muted"> Today I lead Premium & Payments at one of the world's largest web platforms. </span>
-    The journey from developer to VP taught me that the best leaders never stop building.
-  </p>
-  <div class="about-details">
-    <div class="about-detail reveal">
-      <span class="about-detail-label">Role</span>
-      <span class="about-detail-value">VP, Premium & Payments</span>
+  <div class="about-layout">
+    <div>
+      <p class="about-text reveal">
+        <strong>Twenty years ago, I wrote my first line of code.</strong>
+        <span class="muted"> Today I lead Premium & Payments at one of the world's largest web platforms. </span>
+        The journey from developer to VP taught me that the best leaders never stop building.
+      </p>
+      <div class="about-details">
+        <div class="about-detail reveal">
+          <span class="about-detail-label">Role</span>
+          <span class="about-detail-value">VP, Premium & Payments</span>
+        </div>
+        <div class="about-detail reveal reveal-delay-1">
+          <span class="about-detail-label">Company</span>
+          <span class="about-detail-value">Wix.com</span>
+        </div>
+        <div class="about-detail reveal reveal-delay-2">
+          <span class="about-detail-label">Education</span>
+          <span class="about-detail-value">Ben-Gurion University, 1996&ndash;99</span>
+        </div>
+        <div class="about-detail reveal reveal-delay-3">
+          <span class="about-detail-label">Location</span>
+          <span class="about-detail-value">Israel</span>
+        </div>
+      </div>
     </div>
-    <div class="about-detail reveal reveal-delay-1">
-      <span class="about-detail-label">Company</span>
-      <span class="about-detail-value">Wix.com</span>
-    </div>
-    <div class="about-detail reveal reveal-delay-2">
-      <span class="about-detail-label">Education</span>
-      <span class="about-detail-value">Ben-Gurion University, 1996&ndash;99</span>
-    </div>
-    <div class="about-detail reveal reveal-delay-3">
-      <span class="about-detail-label">Location</span>
-      <span class="about-detail-value">Israel</span>
+    <div class="about-photo reveal reveal-delay-1">
+      <img
+        src="itay-800.jpg"
+        srcset="itay-800.jpg 800w, itay-1200.jpg 1200w"
+        sizes="(max-width: 639px) 280px, (max-width: 1023px) 260px, 320px"
+        alt="Itay Shmool"
+        width="800"
+        height="1200"
+        loading="eager"
+      >
     </div>
   </div>
 </section>
