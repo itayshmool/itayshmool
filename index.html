@@ -807,6 +807,25 @@
 
   .footer-link svg { flex-shrink: 0; }
 
+  .footer-qr {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.08);
+  }
+
+  .footer-qr-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(250,249,245,0.35);
+    margin-bottom: 12px;
+  }
+
+  .footer-qr canvas {
+    border-radius: 8px;
+  }
+
   .footer-side-item {
     font-size: 14px;
     color: rgba(250,249,245,0.6);
@@ -1341,6 +1360,10 @@
             Medium
           </a>
         </div>
+        <div class="footer-qr">
+          <div class="footer-qr-label">Scan to visit</div>
+          <canvas id="qrcode"></canvas>
+        </div>
       </div>
       <div class="reveal reveal-d1">
         <div class="footer-col-title">Side Projects</div>
@@ -1367,7 +1390,58 @@
   </div>
 </footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
+
+  // Generate QR code
+  (function() {
+    var qr = qrcode(0, 'M');
+    qr.addData('https://itayshmool.com');
+    qr.make();
+    var canvas = document.getElementById('qrcode');
+    var size = 120;
+    var modules = qr.getModuleCount();
+    var cellSize = size / modules;
+    canvas.width = size;
+    canvas.height = size;
+    var ctx = canvas.getContext('2d');
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    ctx.fillStyle = isDark ? '#1e1e1c' : '#ffffff';
+    ctx.fillRect(0, 0, size, size);
+    ctx.fillStyle = isDark ? '#faf9f5' : '#141413';
+    for (var r = 0; r < modules; r++) {
+      for (var c = 0; c < modules; c++) {
+        if (qr.isDark(r, c)) {
+          ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
+        }
+      }
+    }
+  })();
+
+  function redrawQR() {
+    var qr = qrcode(0, 'M');
+    qr.addData('https://itayshmool.com');
+    qr.make();
+    var canvas = document.getElementById('qrcode');
+    var size = 120;
+    var modules = qr.getModuleCount();
+    var cellSize = size / modules;
+    canvas.width = size;
+    canvas.height = size;
+    var ctx = canvas.getContext('2d');
+    var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    ctx.fillStyle = isDark ? '#1e1e1c' : '#ffffff';
+    ctx.fillRect(0, 0, size, size);
+    ctx.fillStyle = isDark ? '#faf9f5' : '#141413';
+    for (var r = 0; r < modules; r++) {
+      for (var c = 0; c < modules; c++) {
+        if (qr.isDark(r, c)) {
+          ctx.fillRect(c * cellSize, r * cellSize, cellSize, cellSize);
+        }
+      }
+    }
+  }
+
   // Nav scroll effect
   const nav = document.getElementById('nav');
   window.addEventListener('scroll', () => {
@@ -1452,6 +1526,7 @@
   function setTheme(theme) {
     html.setAttribute('data-theme', theme);
     localStorage.setItem('theme-v2', theme);
+    redrawQR();
   }
 
   const saved = localStorage.getItem('theme-v2');
